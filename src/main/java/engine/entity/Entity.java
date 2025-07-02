@@ -1,14 +1,14 @@
-package engine.Entity;
+package engine.entity;
 
-import engine.Component.Component;
-import engine.Component.Transform;
+import engine.component.Component;
+import engine.component.Transform;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Entity {
 	private final List<Component> components = new ArrayList<>();
-	private final Component transform = new Transform();
+	private final Component transform = new Transform(this);
 
 	/*
 		Return the component matching the given type.

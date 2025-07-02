@@ -1,4 +1,4 @@
-package engine.Component;
+package engine.component;
 
 public interface Component {
 }
