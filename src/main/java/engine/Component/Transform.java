@@ -1,7 +1,15 @@
 package engine.Component;
 
-import utils.vector.Vector3Int;
+import utils.vector.Vector3;
 
 public class Transform extends BaseComponent {
-	Vector3Int position;
+	private Vector3 position;
+
+	public void translate(Vector3 translation) {
+		this.position = position.add(translation);
+	}
+
+	public void setPosition(Vector3 newPosition) {
+		this.position = newPosition;
+	}
 }
