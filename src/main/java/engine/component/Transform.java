@@ -4,7 +4,7 @@ import engine.entity.Entity;
 import utils.vector.Vector3;
 
 public class Transform extends BaseComponent {
-	private Vector3 position;
+	private Vector3 position = new Vector3();
 
 	public Transform(Entity owner) {
 		super(owner);

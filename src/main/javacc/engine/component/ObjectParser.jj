@@ -1,0 +1,31 @@
+PARSER_BEGIN(ObjectParser)
+package engine.component;
+
+import java.io.Console;
+
+public class ObjectParser {
+	/*
+	    Load the mesh into
+	 */
+    public void parse(Mesh mesh){
+
+	}
+}
+
+PARSER_END(ObjectParser)
+
+TOKEN : {<SPACE: " ">}
+TOKEN : {<COMMENT:"#"(~["\n"])*>}
+TOKEN : {<POINT:".">}
+TOKEN : {<NAT:(["0"-"9"])+>}
+TOKEN : {<MINUS:"-">}
+TOKEN : {<VERTEX:"v ">}
+TOKEN : {<FACE:"f ">}
+TOKEN : {<NORMAL:"vn ">}
+TOKEN : {<UV:"vt ">}
+
+
+
+
+
+

@@ -14,7 +14,8 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL30.*;
+import static org.lwjgl.opengl.GL30.glBindVertexArray;
+import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
@@ -42,22 +43,14 @@ public class HelloWorld {
 
 		vbo = glGenBuffers();
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		//glBufferData(GL_ARRAY_BUFFER, vertices, GL_STATIC_COPY);
+		glBufferData(GL_ARRAY_BUFFER, vertices, GL_STATIC_DRAW);
 
 		/// Création d'un VAO
 		vao = glGenVertexArrays();
-
 		glBindVertexArray(vao);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		try (MemoryStack stack = MemoryStack.stackPush()) {
-			glBufferData(GL_ARRAY_BUFFER, stack.floats(vertices), GL_STATIC_DRAW);
-		}
 
 		glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0L);
 		glEnableVertexAttribArray(0);
-
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindVertexArray(0);
 
 		String vertexShaderCode = """
 				#version 330 core
@@ -95,11 +88,6 @@ public class HelloWorld {
 
 		glDeleteShader(vertexShader);
 		glDeleteShader(fragmentShader);
-
-		/*glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, false, 3 * GL_FLOAT, 0 );
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-*/
 	}
 
 	public void run() {

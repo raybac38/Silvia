@@ -9,5 +9,6 @@ public class Mesh extends BaseComponent {
 
 	public Mesh(Entity owner) {
 		super(owner);
+		owner.scene.render.addMesh(this);
 	}
 }

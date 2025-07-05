@@ -2,13 +2,20 @@ package engine.entity;
 
 import engine.component.Component;
 import engine.component.Transform;
+import engine.core.Scene;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Entity {
+	public final Scene scene;
 	private final List<Component> components = new ArrayList<>();
 	private final Component transform = new Transform(this);
+
+	public Entity(Scene scene) {
+		this.scene = scene;
+		scene.addEntity(this);
+	}
 
 	/*
 		Return the component matching the given type.
